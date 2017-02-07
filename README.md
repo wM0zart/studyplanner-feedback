@@ -18,7 +18,7 @@
 
 + Далее в домашней директории:
 
-`git clone https://github.com/saptan/support_app`
+`git clone https://github.com/saptan/studyplanner-feedback
 
 `cd support_app`
 
