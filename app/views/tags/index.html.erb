@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align="center">Тэги</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= link_to "#{tag.name}", tag_path(tag) %> <small>(<%=tag.feedbacks.count%>  <%= Russian::pluralize(tag.feedbacks.count, "отзыв", "отзывa", "отзывов") %>)</small></td>
+        <td><%= link_to 'Редактировать', edit_tag_path(tag) %></td>
+        <td><%= link_to 'Удалить', tag, method: :delete, data: { confirm: 'Вы уверены что хотите удалить этот тэг?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<div class="feedback-actions right">
+      <%= link_to 'Добавить', new_tag_path, class: "btn btn-primary" %>
+
+    </div>

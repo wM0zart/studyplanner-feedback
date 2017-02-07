@@ -1,0 +1,13 @@
+<div class="jumbotron">
+  <h2 class="center">Добро пожаловать!</h2>
+ <%= image_tag("Promo.png", :alt => "rss feed", :width => 600, :height => 480) %>
+  <p>Это сайт отзывов и предложений для мобильного приложения "Study Planner". </p>
+	 <% if !user_signed_in? %>
+	 <%= link_to "Регистрация" ,new_user_registration_path, class: "btn btn-large btn-primary"%>
+	 <% end %>
+</div>
+
+
+
+
+

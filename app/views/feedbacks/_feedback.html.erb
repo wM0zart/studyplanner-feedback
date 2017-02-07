@@ -1,0 +1,30 @@
+<% obj.each do |feedback| %>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <div class="well well-lg">
+      <div class="feedback-title">
+      
+           <%= link_to "#{feedback.typefeedback}",feedback_path(feedback), class: "btn btn-default disabled"   %>
+          
+       
+         </br><%= link_to feedback.title, feedback_path(feedback) %>
+      </div>
+      <div class="feedback-body">
+       <%= truncate(feedback.description, length: 100) %>
+      </div>
+        <% if feedback.tags.any? %>
+      <p> Тэги: <%= render feedback.tags %> </p>
+    <% end %>
+
+       <% if user_signed_in? && (feedback.user==current_user || current_user.admin?) %>
+      <div class="feedback-actions right">
+      <%= link_to 'Редактировать', edit_feedback_path(feedback), class: "btn btn-default", aria_hidden: "true"%>
+        <%= link_to 'Удалить', feedback_path(feedback),   method: :delete,
+        data: { confirm: 'Вы действительно хотите удалить отзыв?' }, 
+        class: "btn  btn-danger" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>  
+<% end %>

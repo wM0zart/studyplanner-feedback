@@ -1,0 +1,9 @@
+<h1 align="center"><%= "Тэг: " + @tag.name %></h1>
+
+<div align="center">
+  <%= will_paginate @tag_feedbacks %>
+</div>
+<%= render 'feedbacks/feedback', obj: @tag_feedbacks %>
+<div align="center">
+  <%= will_paginate @tag_feedbacks %>
+</div>

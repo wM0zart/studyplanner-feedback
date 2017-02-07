@@ -1,0 +1,63 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">      
+      <%= link_to 'Study Planner',root_path, class:"navbar-brand", id: "logo" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Отзывы <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Все отзывы",feedbacks_path   %></li>  
+             <!-- В перспективе добавить ссылки на разныти типы отзывов -->
+            <!--  
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Идеи</a></li>
+            <li><a href="#">Сообщения об ошибках</a></li>
+            <li><a href="#">Вопросы</a></li>
+            <li><a href="#">Благодарности</a></li>
+             -->
+             <% if user_signed_in? %>   
+            <li role="separator" class="divider"></li>
+            <li><%= link_to 'Добавить отзыв', new_feedback_path %></li>
+            <% end %>
+          </ul>
+        </li>        
+        <li><%= link_to 'Пользователи', users_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+       
+        <% if user_signed_in? %>  
+
+        <% if current_user.admin? %>        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Управление<span class="caret"></span></a>
+          <ul class="dropdown-menu">    
+            <li><%= link_to 'Панель администратора', '/admin' %></li>        
+            <li><%= link_to 'Используемые тэги', tags_path %></li>
+          </ul>
+        </li>
+        <% end %>         
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">            
+            <li><%= link_to 'Мой профиль', user_path(current_user) %></li>
+            <li><%= link_to 'Редактировать', edit_user_path(current_user) %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
+            <% else %>
+            <li>           
+            <%= link_to "Войти",  new_user_session_path  %>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

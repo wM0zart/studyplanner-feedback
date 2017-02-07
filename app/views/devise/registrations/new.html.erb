@@ -1,0 +1,56 @@
+<h1 class="center">Регистрация</h1>
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {class: "form-horizontal", role: "form"}) do |f| %>
+
+    <%= devise_error_messages! %>
+
+    <div class="form-group">
+      <div class="control-label col-sm-2">   
+        <%= f.label :Имя %>
+      </div>
+      <div class="col-sm-8">
+      <%= f.text_field :username, class: "form-control",  placeholder: "Имя и Фамилия"%>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="control-label col-sm-2">   
+      <%= f.label :email %>
+      </div>
+      <div class="col-sm-8">
+      <%= f.email_field :email, autofocus: true , class: "form-control",  placeholder: "Email"%>
+      </div>
+    </div>
+
+   <div class="form-group">
+      <div class="control-label col-sm-2">   
+      <%= f.label :Пароль %>
+      </div>
+      <div class="col-sm-8">
+      <%= f.password_field :password, autocomplete: "off"  , class: "form-control",  placeholder: "Введите пароль"%>
+      <% if @minimum_password_length %>
+      <small>(Не менее <%= @minimum_password_length %> символов)</small>
+      <% end %><br />
+      </div>
+    </div>
+
+   <div class="form-group">
+      <div class="control-label col-sm-2">  
+      <%= f.label :'Подтверждение' %>
+      </div>
+      <div class="col-sm-8">
+      <%= f.password_field :password_confirmation, autocomplete: "off" , class: "form-control",  placeholder: "Введите пароль еще раз"%>
+    </div>
+</div>
+    <div class="form-group">
+    <div class="control-label col-sm-10"> 
+    </br><%= f.submit "Регистрация" , class: "btn btn-large btn-primary"%>
+  </div>
+  </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+
+</div>
+</div>
