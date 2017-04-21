@@ -20,7 +20,7 @@
 
 `git clone https://github.com/saptan/studyplanner-feedback
 
-`cd support_app`
+`cd studyplanner-feedback`
 
 `bundle install`
 
